@@ -97,12 +97,22 @@ docker-compose.override.yml
 *.log
 logs/
 
-# Secrets / env files
+# Secrets / env files (keep real keys local)
 .env
 .env.*
+.env.local
+*.env.local
 secrets.json
+*.secret.json
+**/*.secrets.json
 *.pem
 *.key
+secrets/
+
+# Local app settings
+src/appsettings.json
+src/appsettings.*.json
+!src/appsettings.sample.json
 
 # Azure deployment files with secrets/credentials
 GITHUB_SECRETS_SETUP.md
@@ -146,6 +156,8 @@ coverage-html/
 
 # Generated files
 appsettings.*.json
+# Keep the public sample config for reference (safe, no secrets)
+!src/appsettings.sample.json
 
 # Misc
 Thumbs.db
